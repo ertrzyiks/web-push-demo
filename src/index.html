@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Web Notifications Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="container main">
+    <h1>Push Notification API Demo</h1>
+
+    <p>
+      This is a demo of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API</a>.
+    </p>
+
+    <div class="action-button">
+      <button id="schedule">Send after 5 seconds</button>
+    </div>
+
+    <div class="row">
+      <div class="card service-worker" id="service-worker-status" data-status="unknown">
+        <h3>Service worker</h3>
+        <p></p>
+      </div>
+
+      <div class="card notification" id="notification-status">
+        <h3>Notifications</h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

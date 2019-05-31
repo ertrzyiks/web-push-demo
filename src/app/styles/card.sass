@@ -1,0 +1,34 @@
+.card
+  margin: 1em 0
+  border: 1px solid #b1bdd0
+  padding: 1em
+  transition: background-color 200ms
+
+.card.service-worker
+  color: #333
+  background-color: #eee
+
+  &[data-status='unsupported']
+    background-color: #f99b9b
+
+  &[data-status='installing'],
+  &[data-status='waiting']
+    background-color: #f7f78c
+
+  &[data-status='activated']
+    background-color: #daf7bb
+
+.card.notification
+  color: #333
+  background-color: #eee
+
+  &[data-status='unsupported'],
+  &[data-status='denied']
+    background-color: #f99b9b
+
+  &[data-status='default']
+    background-color: #f7f78c
+
+  &[data-status='granted']
+    background-color: #daf7bb
+
