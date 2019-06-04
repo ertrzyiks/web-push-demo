@@ -3,6 +3,8 @@ const webpush = require('web-push')
 const express = require('express')
 const bodyParser = require('body-parser')
 
+const PORT = process.env.PORT || 8006
+
 webpush.setVapidDetails(
   `mailto:${process.env.VAPID_EMAIL}`,
   process.env.VAPID_PUBLIC_KEY,
@@ -44,4 +46,6 @@ app.post('/push', (req, res) => {
   }, 5000)
 })
 
-app.listen(process.env.PORT || 8006)
+app.listen(PORT, () => {
+  console.log(`Listening on http://localhost:${PORT}`)
+})
