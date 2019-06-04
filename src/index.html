@@ -11,6 +11,17 @@
 
     <p>
       This is a demo of <a href="https://developer.mozilla.org/en-US/docs/Web/API/Push_API">Push API</a>.
+      Make sure to use a browser that <a href="https://caniuse.com/#feat=push-api,notifications,serviceworkers">supports all the required features</a>.
+    </p>
+
+    <ol>
+      <li>Click on the button below</li>
+      <li>Accept getting notifications (if prompted)</li>
+      <li>Close the browser or at least switch to another tab</li>
+    </ol>
+
+    <p>
+      After 5 seconds, you will receive the notification.
     </p>
 
     <div class="action-button">
@@ -20,19 +31,16 @@
     <div class="row">
       <div class="card service-worker" id="service-worker-status" data-status="unknown">
         <h3>Service worker</h3>
-        <a class="card-link" href="https://caniuse.com/#feat=serviceworkers">Browser support</a>
         <p>&nbsp;</p>
       </div>
 
       <div class="card push-api" id="push-api-status" data-status="unknown">
         <h3>Push API</h3>
-        <a class="card-link" href="https://caniuse.com/#feat=push-api">Browser support</a>
         <p>&nbsp;</p>
       </div>
 
       <div class="card notification" id="notification-status" data-status="unknown">
         <h3>Notifications</h3>
-        <a class="card-link" href="https://caniuse.com/#feat=notifications">Browser support</a>
         <p>&nbsp;</p>
       </div>
     </div>
