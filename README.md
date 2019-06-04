@@ -59,3 +59,7 @@ VAPID_PUBLIC_KEY=B5A.....dRE
 ```
 yarn start
 ```
+
+## Useful links
+
+ - https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications
