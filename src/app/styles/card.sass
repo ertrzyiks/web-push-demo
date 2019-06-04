@@ -1,13 +1,15 @@
 .card
+  color: #333
+  background-color: #eee
   margin: 1em 0
   border: 1px solid #b1bdd0
   padding: 1em
   transition: background-color 200ms
 
-.card.service-worker
-  color: #333
-  background-color: #eee
+.card-link
+  margin: 1em 0
 
+.card.service-worker
   &[data-status='unsupported']
     background-color: #f99b9b
 
@@ -15,13 +17,11 @@
   &[data-status='waiting']
     background-color: #f7f78c
 
-  &[data-status='activated']
+  &[data-status='activated'],
+  &[data-status='activating']
     background-color: #daf7bb
 
 .card.notification
-  color: #333
-  background-color: #eee
-
   &[data-status='unsupported'],
   &[data-status='denied']
     background-color: #f99b9b
@@ -31,4 +31,12 @@
 
   &[data-status='granted']
     background-color: #daf7bb
+
+.card.push-api
+  &[data-status='unsupported']
+    background-color: #f99b9b
+
+  &[data-status='supported']
+    background-color: #daf7bb
+
 

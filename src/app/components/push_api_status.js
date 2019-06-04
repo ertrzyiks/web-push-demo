@@ -1,22 +1,14 @@
 import debounce from 'lodash.debounce'
 
-export function createNotificationStatusComponent(el) {
+export function createPushApiStatusComponent(el) {
   const p = el.querySelector('p:last-child')
 
   return debounce(state => {
     el.setAttribute('data-status', state)
 
     switch(state) {
-      case 'granted':
-        p.innerText = 'Permission granted 👍🏼'
-        break
-
-      case 'denied':
-        p.innerText = 'Permission denied 👎🏼'
-        break
-
-      case 'default':
-        p.innerText = 'Accept notifications when prompted'
+      case 'supported':
+        p.innerText = 'Supported 👍🏼'
         break
 
       case 'unsupported':

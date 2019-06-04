@@ -12,3 +12,23 @@ export function urlBase64ToUint8Array(base64String) {
   }
   return outputArray;
 }
+
+export function observeServiceWorker(registration, callback) {
+  let serviceWorker;
+  if (registration.installing) {
+    serviceWorker = registration.installing;
+  } else if (registration.waiting) {
+    serviceWorker = registration.waiting;
+  } else if (registration.active) {
+    serviceWorker = registration.active;
+  }
+
+  if (serviceWorker) {
+    callback(serviceWorker.state)
+    serviceWorker.addEventListener('statechange', e => callback(e.target.state))
+  }
+
+  registration.addEventListener('updatefound', () => {
+    observeServiceWorker(registration, callback)
+  })
+}

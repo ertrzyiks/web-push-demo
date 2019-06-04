@@ -1,49 +1,28 @@
-const debounce = require('lodash.debounce')
-
-export function serviceWorkerComponent(el, registration) {
+export function createServiceWorkerComponent(el) {
   const p = el.querySelector('p:last-child')
 
-  const update = debounce((status) => {
-    updateState(el, p, status)
-  }, 700)
+  return function (state) {
+    el.setAttribute('data-status', state)
 
-  if (!('serviceWorker' in navigator)) {
-    update('unsupported')
-    return
-  }
+    switch(state) {
+      case 'installing':
+        p.innerText = 'Installing 🤞🏼'
+        break
 
-  let serviceWorker;
-  if (registration.installing) {
-    serviceWorker = registration.installing;
-  } else if (registration.waiting) {
-    serviceWorker = registration.waiting;
-  } else if (registration.active) {
-    serviceWorker = registration.active;
-  }
+      case 'activated':
+        p.innerText = 'Activated 👍🏼'
+        break
 
-  if (serviceWorker) {
-    updateState(el, p, serviceWorker.state)
-    serviceWorker.addEventListener('statechange', e => update(e.target.state))
-  }
-}
+      case 'activating':
+        p.innerText = 'Activating 🔄'
+        break
 
-function updateState(el, p, state) {
-  el.setAttribute('data-status', state)
+      case 'unsupported':
+        p.innerHTML = 'Not supported in this browser.'
+        break
 
-  switch(state) {
-    case 'installing':
-      p.innerText = 'Installing 🤞🏼'
-      break
-
-    case 'activated':
-      p.innerText = 'Activated 👍🏼'
-      break
-
-    case 'unsupported':
-      p.innerHTML = 'Not supported in this browser. Pick from <a href="https://caniuse.com/#feat=serviceworkers">the list</a> one which does.'
-      break
-
-    default:
-      p.innerText = state
+      default:
+        p.innerText = state
+    }
   }
 }

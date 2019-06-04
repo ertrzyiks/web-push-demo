@@ -14,7 +14,6 @@ self.addEventListener('push', event => {
 
   const notificationPromise = self.registration.showNotification(data.title, {
     body: data.message,
-    tag: 'simple-push-demo-notification',
     data: { redirect_url: data.redirect_url }
   })
 
