@@ -4,12 +4,16 @@ self.addEventListener('push', event => {
     data = event.data.json()
   }
 
-  const notificationPromise = self.registration.showNotification(data.title, {
-    body: data.message,
-    data: { redirect_url: data.redirect_url }
-  })
+  event.waitUntil((async () => {
+    const allClients = await clients.matchAll()
 
-  event.waitUntil(notificationPromise)
+    allClients.forEach(client => client.postMessage(`Received a notification: ${data.title}`))
+
+    await self.registration.showNotification(data.title, {
+      body: data.message,
+      data: { redirect_url: data.redirect_url }
+    })
+  })())
 })
 
 self.addEventListener('notificationclick', function(event) {

@@ -29,6 +29,8 @@ if (process.env.NODE_ENV === 'production') {
 app.post('/push', (req, res) => {
   const pushSubscription = req.body
 
+  res.json({success: true})
+
   setTimeout(() => {
     const payload = {
       title: 'Test notification',
@@ -37,11 +39,8 @@ app.post('/push', (req, res) => {
     }
 
     webpush.sendNotification(pushSubscription, JSON.stringify(payload))
-      .then(data => {
-        res.json({success: true, data})
-      })
       .catch(e => {
-        res.json({success: false, error: e.message})
+        // Report to Sentry or Rollbar
       })
   }, 5000)
 })
