@@ -34,7 +34,7 @@ app.post('/push', (req, res) => {
   setTimeout(() => {
     const payload = {
       title: 'Test notification',
-      message: 'Click on it to navigate back to the demo website',
+      message: 'Click on it to navigate to the demo website',
       redirect_url: process.env.PUBLIC_URL + '/notification.html'
     }
 
