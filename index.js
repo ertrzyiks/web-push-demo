@@ -35,7 +35,7 @@ app.post('/push', (req, res) => {
     const payload = {
       title: 'Test notification',
       message: 'Click on it to navigate back to the demo website',
-      redirect_url: process.env.PUBLIC_URL
+      redirect_url: process.env.PUBLIC_URL + '/notification.html'
     }
 
     webpush.sendNotification(pushSubscription, JSON.stringify(payload))

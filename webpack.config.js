@@ -29,6 +29,12 @@ module.exports = {
       template: 'src/index.html',
       inlineSource: '.(js|css)$'
     }),
+    new HtmlWebpackPlugin({
+      chunks: ['index'],
+      filename: 'notification.html',
+      template: 'src/notification.html',
+      inlineSource: '.(js|css)$'
+    }),
     new HtmlWebpackInlineSourcePlugin(),
     new webpack.DefinePlugin({
       'process.env.VAPID_PUBLIC_KEY': JSON.stringify(process.env.VAPID_PUBLIC_KEY)
